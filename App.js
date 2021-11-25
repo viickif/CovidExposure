@@ -27,15 +27,37 @@ import ExposureStatus from "./screens/ExposureStatus";
 import ExposureKey from "./screens/ExposureKey";
 import QRInfoSuccess from "./screens/QRInfoSuccess";
 import QROptions from "./screens/QROptions";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      <Center flex={1} px="3">
-        <QROptions />
-      </Center>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="QROptions"
+          component={QROptions}
+          options={{ title: "QR options" }}
+        />
+        <Stack.Screen
+          name="ExposureStatus"
+          component={ExposureStatus}
+          options={{ title: "Exposure status" }}
+        />
+        <Stack.Screen
+          name="ExposureKey"
+          component={ExposureKey}
+          options={{ title: "Exposure key" }}
+        />
+        <Stack.Screen
+          name="QRInfoSuccess"
+          component={QRInfoSuccess}
+          options={{ title: "QR information" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
