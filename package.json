@@ -10,8 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "native-base": "^3.2.2",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-material-kit": "^0.6.0-beta.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
