@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import {
   Heading,
@@ -15,7 +15,11 @@ import {
   NativeBaseProvider,
   Button,
   Input,
+  Divider,
+  Box,
+
 } from "native-base";
+import { width } from "dom-helpers";
 
 const ExposureStatus = () => {
   return (
@@ -48,7 +52,7 @@ const ExposureKey = () => {
         Enter your one-time key
       </Heading>
       <Text fontSize="xl" textAlign="center">
-        Enter the key you got when you received your diagnosis.
+        Enter the key you got when you received your diagnosis
       </Text>
       <Input
         mx="3"
@@ -66,11 +70,68 @@ const ExposureKey = () => {
   );
 };
 
+const QRInfoSuccess = () => {
+  return (
+    <VStack
+      w="100%"
+      space={2.5}
+      px="2"
+      mt="4"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Text fontSize="4xl" textAlign="center">
+        John Doe
+      </Text>
+      <Divider my="2" />
+      <Heading textAlign="center" mb="10">
+        QR code information
+      </Heading>
+      <View style={styles.infoContainer}>
+        <Text bold fontSize="lg" textAlign="center">
+          Date of birth
+        </Text>
+        <Text fontSize="lg" textAlign="center">
+          May 01 2000
+        </Text>
+      </View>
+      <View style={styles.infoContainer}>
+        <Text bold fontSize="lg" textAlign="center">
+          First vaccine dose
+        </Text>
+        <Text fontSize="lg" textAlign="center">
+          Complete
+        </Text>
+      </View>
+      <View style={styles.infoContainer}>
+        <Text bold fontSize="lg" textAlign="center">
+          Second vaccine dose
+        </Text>
+        <Text fontSize="lg" textAlign="center">
+          Complete
+        </Text>
+      </View>
+    </VStack>
+  );
+};
+
+const styles = StyleSheet.create({
+  infoContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: 10,
+
+  },
+});
+
 const App = () => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
-        <ExposureKey />
+        <QRInfoSuccess />
       </Center>
     </NativeBaseProvider>
   );
