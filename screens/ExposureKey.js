@@ -5,7 +5,8 @@
  * @format
  * @flow strict-local
  */
-import { StyleSheet, View } from "react-native";
+
+import { View, StyleSheet } from "react-native";
 import React from "react";
 import {
   Heading,
@@ -17,14 +18,15 @@ import {
   Input,
   Divider,
   HStack,
-  Alert,
   Switch,
   Box,
+  Alert,
   Image,
 } from "native-base";
 import { width } from "dom-helpers";
+import { ToastAndroid, Platform, AlertIOS } from "react-native";
 
-const ExposureKey = () => {
+const ExposureKey = ({ navigation }) => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
@@ -75,7 +77,17 @@ const ExposureKey = () => {
               md: "25%",
             }}
           />
-          <Button size="lg" w="90%" onPress={() => console.log("hello world")}>
+          <Button
+            size="lg"
+            w="90%"
+            onPress={() => {
+              new ToastAndroid.show(
+                "Successfully submitted",
+                ToastAndroid.SHORT
+              );
+              navigation.navigate("Home");
+            }}
+          >
             Submit
           </Button>
         </VStack>

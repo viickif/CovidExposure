@@ -105,6 +105,10 @@ const styles = StyleSheet.create({
   alert: {
     paddingRight: 10,
   },
+
+  container: {
+    backgroundColor: "pink",
+  },
 });
 
 export default QROptions;

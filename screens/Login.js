@@ -16,7 +16,7 @@ import {
   Image,
 } from "native-base";
 
-const ExposureStatus = () => {
+const Login = ({navigation}) => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
@@ -28,13 +28,32 @@ const ExposureStatus = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Text fontSize="4xl" textAlign="center">
-            You have not been exposed
-          </Text>
+          <Button size="lg" w="90%" onPress={() => navigation.navigate("QROptions")}>
+            Log in with BC service card app
+          </Button>
         </VStack>
       </Center>
     </NativeBaseProvider>
   );
 };
 
-export default ExposureStatus;
+const styles = StyleSheet.create({
+  infoContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: 10,
+  },
+
+  alert: {
+    paddingRight: 10,
+  },
+
+  container: {
+    backgroundColor: "pink",
+  },
+});
+
+export default Login;
