@@ -50,13 +50,6 @@ const Home = ({ navigation }) => {
             QR options
           </Button>
           <Divider my="2" />
-          <Button
-            size="lg"
-            w="90%"
-            onPress={() => navigation.navigate("QRScanner")}
-          >
-            Verify QR
-          </Button>
         </VStack>
       </Center>
     </NativeBaseProvider>
