@@ -31,6 +31,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import QRScanner from "./screens/QRScanner";
+import QRInfoFailure from "./screens/QRInfoFailure";
 
 const Stack = createNativeStackNavigator();
 
@@ -65,10 +67,20 @@ const App = () => {
             component={QRInfoSuccess}
             options={{ title: "QR information" }}
           />
-                    <Stack.Screen
+          <Stack.Screen
+            name="QRInfoFailure"
+            component={QRInfoFailure}
+            options={{ title: "QR information" }}
+          />
+          <Stack.Screen
             name="Login"
             component={Login}
             options={{ title: "Log in" }}
+          />
+          <Stack.Screen
+            name="QRScanner"
+            component={QRScanner}
+            options={{ title: "QR Scanner" }}
           />
         </Stack.Group>
       </Stack.Navigator>

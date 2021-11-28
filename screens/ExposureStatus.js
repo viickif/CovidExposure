@@ -31,6 +31,14 @@ const ExposureStatus = () => {
           <Text fontSize="4xl" textAlign="center">
             You have not been exposed
           </Text>
+          <Image
+            source={{
+              uri:
+                "https://www.pngall.com/wp-content/uploads/8/Green-Check-Mark-PNG-Clipart.png",
+            }}
+            alt="Alternate Text"
+            size="xl"
+          />
         </VStack>
       </Center>
     </NativeBaseProvider>

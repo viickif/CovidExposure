@@ -24,7 +24,7 @@ import {
 } from "native-base";
 import { width } from "dom-helpers";
 
-const QRInfoSuccess = () => {
+const QRInfoFailure = () => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
@@ -37,7 +37,7 @@ const QRInfoSuccess = () => {
           justifyContent="center"
         >
           <Text fontSize="4xl" textAlign="center">
-            John Doe
+            Mary Poppins
           </Text>
           <Divider my="2" />
           <Heading textAlign="center" mb="10">
@@ -48,7 +48,7 @@ const QRInfoSuccess = () => {
               Date of birth
             </Text>
             <Text fontSize="lg" textAlign="center">
-              May 01 2000
+              Aug 20 1978
             </Text>
           </View>
           <View style={styles.infoContainer}>
@@ -56,7 +56,7 @@ const QRInfoSuccess = () => {
               First vaccine dose
             </Text>
             <Text fontSize="lg" textAlign="center">
-              Complete
+              Incomplete
             </Text>
           </View>
           <View style={styles.infoContainer}>
@@ -64,13 +64,13 @@ const QRInfoSuccess = () => {
               Second vaccine dose
             </Text>
             <Text fontSize="lg" textAlign="center">
-              Complete
+              Incomplete
             </Text>
           </View>
           <Image
             source={{
               uri:
-                "https://www.pngall.com/wp-content/uploads/8/Green-Check-Mark-PNG-Clipart.png",
+                "https://lh3.googleusercontent.com/proxy/n3fhYofSZ29Ovj767U9UgNYqNH7VxbhWm66tk5dLSNa8Qxv2pxEOvCskNqjJi9d4c8GRyEokUtdFoTTR7Tc98rTAm4rwCxr2CsUG2B4BkORhi7oHod9MIY9licurAkiT6WjRAipqfnEcKgCze79-BliStAO1C_1oU6BOBNOI_Bf28zW4D7U",
             }}
             alt="Alternate Text"
             size="xl"
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QRInfoSuccess;
+export default QRInfoFailure;
