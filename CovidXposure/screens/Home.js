@@ -49,7 +49,6 @@ const Home = ({ navigation }) => {
           >
             QR options
           </Button>
-          <Divider my="2" />
         </VStack>
       </Center>
     </NativeBaseProvider>

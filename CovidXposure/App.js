@@ -31,9 +31,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
-import QRScanner from "./screens/QRScanner";
 import QRInfoFailure from "./screens/QRInfoFailure";
 import PairingCode from "./screens/PairgCode";
+import BCServiceLoginOptions from "./screens/BCServiceLoginOptions"
 
 const Stack = createNativeStackNavigator();
 
@@ -78,15 +78,15 @@ const App = () => {
             component={Login}
             options={{ title: "Log in" }}
           />
-          <Stack.Screen
-            name="QRScanner"
-            component={QRScanner}
-            options={{ title: "QR Scanner" }}
-          />
                     <Stack.Screen
             name="PairingCode"
             component={PairingCode}
             options={{ title: "Pairing Code" }}
+          />
+                              <Stack.Screen
+            name="BCService"
+            component={BCServiceLoginOptions}
+            options={{ title: "Log in with BC Service Card" }}
           />
         </Stack.Group>
       </Stack.Navigator>

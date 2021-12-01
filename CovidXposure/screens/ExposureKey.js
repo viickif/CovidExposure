@@ -69,6 +69,7 @@ const ExposureKey = ({ navigation }) => {
             </VStack>
           </Alert>
           <Input
+            backgroundColor="white"
             mx="3"
             placeholder="Enter one-time key"
             size="lg"

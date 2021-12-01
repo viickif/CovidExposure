@@ -16,6 +16,7 @@ import {
   Image,
 } from "native-base";
 
+
 const Home = ({ navigation }) => {
   return (
     <NativeBaseProvider>

@@ -1,4 +1,4 @@
-import { ImageBackgroundComponent, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import {
   Heading,
@@ -15,9 +15,8 @@ import {
   Box,
   Image,
 } from "native-base";
-import { TouchableOpacity } from "react-native";
 
-const PairingCode = ({ navigation }) => {
+const BCServiceLoginOptions = ({ navigation }) => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
@@ -29,14 +28,22 @@ const PairingCode = ({ navigation }) => {
           alignItems="center"
           justifyContent="center"
         >
-          <Heading textAlign="center" mb="10">
-            Pairing code
-          </Heading>
-          <Text fontSize="2xl" textAlign="center">
-            ABC DEF
+          <Text bold fontSize="lg" textAlign="center">
+            Set up the BC Services Card app
           </Text>
-          <TouchableOpacity style={styles.hidden} onPress={() => navigation.navigate("QROptions")}>
-          </TouchableOpacity>
+          <Button size="lg" w="90%" mb="6" onPress={() => {}}>
+            Get set up
+          </Button>
+          <Text bold fontSize="lg" textAlign="center">
+            Already set up?
+          </Text>
+          <Button
+            size="lg"
+            w="90%"
+            onPress={() => navigation.navigate("PairingCode")}
+          >
+            Continue with BC Service Card app
+          </Button>
         </VStack>
       </Center>
     </NativeBaseProvider>
@@ -57,10 +64,9 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
 
-  hidden: {
-    height: 100,
-    width: "100%",
+  container: {
+    backgroundColor: "pink",
   },
 });
 
-export default PairingCode;
+export default BCServiceLoginOptions;
