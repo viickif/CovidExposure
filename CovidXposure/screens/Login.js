@@ -1,5 +1,5 @@
-import { StyleSheet, View } from "react-native";
-import React from "react";
+import {StyleSheet, View} from 'react-native';
+import React from 'react';
 import {
   Heading,
   Text,
@@ -15,16 +15,18 @@ import {
   Box,
   Image,
   Select,
-} from "native-base";
-import { useState } from "react";
+} from 'native-base';
+import {useState} from 'react';
+import {ToastAndroid, Platform, AlertIOS} from 'react-native';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [dobYear, setDobYear] = useState(null);
   const [dobMonth, setDobMonth] = useState(null);
   const [dobDay, setDobDay] = useState(null);
   const [vacYear, setVacYear] = useState(null);
   const [vacMonth, setVacMonth] = useState(null);
   const [vacDay, setVacDay] = useState(null);
+  const [healthNum, setHealthNum] = useState(null);
 
   let years = [];
   for (let i = 0; i < 120; i++) {
@@ -45,13 +47,11 @@ const Login = ({ navigation }) => {
           px="2"
           mt="4"
           alignItems="center"
-          justifyContent="center"
-        >
+          justifyContent="center">
           <Button
             size="lg"
             w="90%"
-            onPress={() => navigation.navigate("BCService")}
-          >
+            onPress={() => navigation.navigate('BCService')}>
             Log in with BC service card app
           </Button>
           <Text fontSize="2xl" bold textAlign="center">
@@ -61,14 +61,19 @@ const Login = ({ navigation }) => {
             Personal Health Number
           </Text>
           <Input
+            value={healthNum}
+            onChange={text => {
+              setHealthNum(text.nativeEvent.text)
+              ;
+            }}
             backgroundColor="white"
             backgroundColor="white"
             mx="3"
             placeholder="Enter your personal health number"
             size="md"
             w={{
-              base: "90%",
-              md: "25%",
+              base: '90%',
+              md: '25%',
             }}
           />
           <Text fontSize="md" textAlign="center">
@@ -79,8 +84,7 @@ const Login = ({ navigation }) => {
             space={2.5}
             px="2"
             alignItems="center"
-            justifyContent="space-between"
-          >
+            justifyContent="space-between">
             <Select
               backgroundColor="white"
               backgroundColor="white"
@@ -88,14 +92,13 @@ const Login = ({ navigation }) => {
               minWidth="75"
               placeholder="Year"
               mt={1}
-              onValueChange={(itemValue) => setDobYear(itemValue)}
-            >
+              onValueChange={itemValue => setDobYear(itemValue)}>
               {years.map(function (year, i) {
                 return (
                   <Select.Item
-                    label={2021 - year}
-                    value={2021 - year}
-                    key={year}
+                    label={`${2021 - year}`}
+                    value={`${2021 - year}`}
+                    key={`${2021 - year}`}
                   />
                 );
               })}
@@ -106,8 +109,7 @@ const Login = ({ navigation }) => {
               minWidth="120"
               placeholder="Month"
               mt={1}
-              onValueChange={(itemValue) => setDobMonth(itemValue)}
-            >
+              onValueChange={itemValue => setDobMonth(itemValue)}>
               <Select.Item label="Jan" value="Jan" />
               <Select.Item label="Feb" value="Feb" />
               <Select.Item label="Mar" value="Mar" />
@@ -127,10 +129,15 @@ const Login = ({ navigation }) => {
               minWidth="75"
               placeholder="Day"
               mt={1}
-              onValueChange={(itemValue) => setDobDay(itemValue)}
-            >
+              onValueChange={itemValue => setDobDay(itemValue)}>
               {days.map(function (day, i) {
-                return <Select.Item label={day} value={day} key={day} />;
+                return (
+                  <Select.Item
+                    label={`${day}`}
+                    value={`${day}`}
+                    key={`${day}`}
+                  />
+                );
               })}
             </Select>
           </HStack>
@@ -142,22 +149,20 @@ const Login = ({ navigation }) => {
             space={2.5}
             px="2"
             alignItems="center"
-            justifyContent="space-between"
-          >
+            justifyContent="space-between">
             <Select
               backgroundColor="white"
               selectedValue={vacYear}
               minWidth="75"
               placeholder="Year"
               mt={1}
-              onValueChange={(itemValue) => setVacYear(itemValue)}
-            >
+              onValueChange={itemValue => setVacYear(itemValue)}>
               {years.map(function (year, i) {
                 return (
                   <Select.Item
-                    label={2021 - year}
-                    value={2021 - year}
-                    key={year}
+                    label={`${2021 - year}`}
+                    value={`${2021 - year}`}
+                    key={`${2021 - year}`}
                   />
                 );
               })}
@@ -168,8 +173,7 @@ const Login = ({ navigation }) => {
               minWidth="120"
               placeholder="Month"
               mt={1}
-              onValueChange={(itemValue) => setVacMonth(itemValue)}
-            >
+              onValueChange={itemValue => setVacMonth(itemValue)}>
               <Select.Item label="Jan" value="Jan" />
               <Select.Item label="Feb" value="Feb" />
               <Select.Item label="Mar" value="Mar" />
@@ -189,18 +193,46 @@ const Login = ({ navigation }) => {
               minWidth="75"
               placeholder="Day"
               mt={1}
-              onValueChange={(itemValue) => setVacDay(itemValue)}
-            >
+              onValueChange={itemValue => setVacDay(itemValue)}>
               {days.map(function (day, i) {
-                return <Select.Item label={day} value={day} key={day} />;
+                return (
+                  <Select.Item
+                    label={`${day}`}
+                    value={`${day}`}
+                    key={`${day}`}
+                  />
+                );
               })}
             </Select>
           </HStack>
           <Button
             size="lg"
             w="90%"
-            onPress={() => navigation.navigate("QROptions")}
-          >
+            onPress={() => {
+              if (
+                healthNum != '12345' ||
+                dobYear != '2000' ||
+                dobMonth != 'Jan' ||
+                dobDay != '1' ||
+                vacYear != '2000' ||
+                vacMonth != 'Jan' ||
+                vacDay != '1'
+              ) {
+                console.log(healthNum)
+                console.log(dobYear)
+                console.log(dobMonth)
+                console.log(dobDay)
+                console.log(vacYear)
+                console.log(vacMonth)
+                console.log(vacDay)
+                new ToastAndroid.show(
+                  'Invalid credentials',
+                  ToastAndroid.SHORT,
+                );
+                return;
+              }
+              navigation.navigate('QROptions');
+            }}>
             Enter
           </Button>
         </VStack>
@@ -211,11 +243,11 @@ const Login = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   infoContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
     padding: 10,
   },
 
@@ -224,7 +256,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "pink",
+    backgroundColor: 'pink',
   },
 });
 

@@ -6,8 +6,8 @@
  * @flow strict-local
  */
 
-import { View, StyleSheet } from "react-native";
-import React from "react";
+import {View, StyleSheet} from 'react-native';
+import React from 'react';
 import {
   Heading,
   Text,
@@ -22,11 +22,13 @@ import {
   Box,
   Alert,
   Image,
-} from "native-base";
-import { width } from "dom-helpers";
-import { ToastAndroid, Platform, AlertIOS } from "react-native";
+} from 'native-base';
+import {width} from 'dom-helpers';
+import {ToastAndroid, Platform, AlertIOS} from 'react-native';
+import {useState} from 'react';
 
-const ExposureKey = ({ navigation }) => {
+const ExposureKey = ({navigation}) => {
+  const [key, setKey] = useState('');
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
@@ -36,8 +38,7 @@ const ExposureKey = ({ navigation }) => {
           px="2"
           mt="4"
           alignItems="center"
-          justifyContent="center"
-        >
+          justifyContent="center">
           <Heading textAlign="center" mb="10">
             Enter your one-time key
           </Heading>
@@ -47,16 +48,14 @@ const ExposureKey = ({ navigation }) => {
                 flexShrink={1}
                 space={2}
                 alignItems="center"
-                justifyContent="space-between"
-              >
+                justifyContent="space-between">
                 <HStack flexShrink={1} space={2} alignItems="center">
                   <Alert.Icon />
                   <View style={styles.alert}>
                     <Text
                       fontSize="sm"
                       fontWeight="medium"
-                      color="coolGray.800"
-                    >
+                      color="coolGray.800">
                       A key was given to you when you received your diagnosis
                     </Text>
                   </View>
@@ -69,26 +68,36 @@ const ExposureKey = ({ navigation }) => {
             </VStack>
           </Alert>
           <Input
+            value={key}
+            onChange={text => {
+              setKey(text);
+            }}
             backgroundColor="white"
             mx="3"
             placeholder="Enter one-time key"
             size="lg"
             w={{
-              base: "90%",
-              md: "25%",
+              base: '90%',
+              md: '25%',
             }}
           />
           <Button
             size="lg"
             w="90%"
             onPress={() => {
+              if (key != 'abcdef') {
+                new ToastAndroid.show(
+                  'Invalid key',
+                  ToastAndroid.SHORT,
+                );
+                return;
+              }
               new ToastAndroid.show(
-                "Successfully submitted",
-                ToastAndroid.SHORT
+                'Successfully submitted',
+                ToastAndroid.SHORT,
               );
-              navigation.navigate("Home");
-            }}
-          >
+              navigation.navigate('Home');
+            }}>
             Submit
           </Button>
         </VStack>
@@ -99,11 +108,11 @@ const ExposureKey = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   infoContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
     padding: 10,
   },
 

@@ -1,4 +1,4 @@
-package com.doorsdoorsdoors;
+package com.covidxposure;
 
 import com.facebook.react.ReactActivity;
 
