@@ -35,7 +35,7 @@ const PairingCode = ({ navigation }) => {
           <Text fontSize="2xl" textAlign="center">
             ABC DEF
           </Text>
-          <TouchableOpacity style={styles.hidden} onPress={() => navigation.navigate("QROptions")}>
+          <TouchableOpacity style={styles.hidden} onPress={() => navigation.navigate("QRCodes")}>
           </TouchableOpacity>
         </VStack>
       </Center>

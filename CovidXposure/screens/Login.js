@@ -231,7 +231,7 @@ const Login = ({navigation}) => {
                 );
                 return;
               }
-              navigation.navigate('QROptions');
+              navigation.navigate('QRCodes');
             }}>
             Enter
           </Button>

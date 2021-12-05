@@ -87,7 +87,7 @@ const ExposureKey = ({navigation}) => {
             onPress={() => {
               if (key != 'abcdef') {
                 new ToastAndroid.show(
-                  'Invalid key',
+                  'Successfully submitted',
                   ToastAndroid.SHORT,
                 );
                 return;

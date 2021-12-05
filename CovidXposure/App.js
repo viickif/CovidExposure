@@ -34,6 +34,8 @@
  import QRInfoFailure from "./screens/QRInfoFailure";
  import PairingCode from "./screens/PairgCode";
  import BCServiceLoginOptions from "./screens/BCServiceLoginOptions"
+ import UnsecureQR from "./screens/UnsecureQR";
+import QRCodes from "./screens/QRCodes";
  
  const Stack = createNativeStackNavigator();
  
@@ -50,7 +52,19 @@
            <Stack.Screen
              name="QROptions"
              component={QROptions}
-             options={{ title: "QR options" }}
+             options={{ title: "Encrypted QR code" }}
+             style={styles.container}
+           />
+                      <Stack.Screen
+             name="UnsecureQR"
+             component={UnsecureQR}
+             options={{ title: "Offline QR code" }}
+             style={styles.container}
+           />
+                                 <Stack.Screen
+             name="QRCodes"
+             component={QRCodes}
+             options={{ title: "QR codes" }}
              style={styles.container}
            />
            <Stack.Screen
